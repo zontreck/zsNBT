@@ -4,6 +4,10 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files
+NBTTester/bin
+NBTTester/obj
+zsNBT/bin
+zsNBT/obj
 *.rsuser
 *.suo
 *.user
