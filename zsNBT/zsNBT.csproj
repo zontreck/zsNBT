@@ -1,12 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <Authors>Tara Piccari</Authors>
     <Company>Zontreck.Dev</Company>
     <Product>ZS NBT</Product>
     <Description>A custom variation of NBT with hooks to be able to serialize and deserialize regular C# class objects, then save or load to/from file</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\LibZNI\LibZNI.csproj" />
+  </ItemGroup>
 
 </Project>
