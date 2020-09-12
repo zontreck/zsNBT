@@ -98,6 +98,11 @@ namespace zsNBT
             return tags.ContainsValue(item);
         }
 
+        public bool Contains(string itemName)
+        {
+            return tags.ContainsKey(itemName);
+        }
+
         public void CopyTo(NBTTag[] array, int arrayIndex)
         {
             tags.Values.CopyTo(array, arrayIndex);
