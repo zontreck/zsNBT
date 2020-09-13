@@ -15,7 +15,7 @@ namespace zsNBT
             NBTTag currentParent = parent;
             foreach (FieldInfo fi in fields)
             {
-                Console.WriteLine($"Name: {fi.Name}\nType: {fi.FieldType.Name}\nValue: {fi.GetValue(src)}\n\n");
+                //Console.WriteLine($"Name: {fi.Name}\nType: {fi.FieldType.Name}\nValue: {fi.GetValue(src)}\n\n");
                 NBTTag theTag = null;
                 switch (fi.FieldType.Name)
                 {
