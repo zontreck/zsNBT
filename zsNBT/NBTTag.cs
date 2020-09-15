@@ -316,27 +316,27 @@ namespace zsNBT
     
     public enum NBTTagType
     {
-        STRING=1,
-        INT=5,
-        FLOAT=8,
-        BYTE=3,
+        STRING=9,
+        INT=10,
+        FLOAT=20,
+        BYTE=21,
         /*LONG,
         SHORT,*/
-        DOUBLE=6,
-        STRINGARRAY=7,
-        INTARRAY=9,
-        FLOATARRAY=10,
-        BYTEARRAY=11,
+        DOUBLE=61,
+        STRINGARRAY=17,
+        INTARRAY=91,
+        FLOATARRAY=101,
+        BYTEARRAY=111,
         /*LONGARRAY,
         SHORTARRAY,*/
-        DOUBLEARRAY=12,
+        DOUBLEARRAY=112,
 
 
-        COMPOUND=2,
+        COMPOUND=1,
 
-        END=4, // Used to show the end of a list or a compound
+        END=44, // Used to show the end of a list or a compound
 
 
-        INVALID=0
+        INVALID=93
     }
 }
