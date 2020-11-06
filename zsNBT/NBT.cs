@@ -57,6 +57,13 @@ namespace zsNBT
                         } else if (fi.GetValue(src).ToString().Contains("System.Double"))
                         {
                             theTag = new NBTDoubleArray(fi.Name, (List<double>)fi.GetValue(src));
+                        } else
+                        {
+                            // Treat as a compound tag
+                            NBTFolder tags = new NBTFolder(fi.Name);
+                            Type _typ = Type.GetType(fi.GetValue(src).ToString());
+                            tags.Add(new NBTString("_TYPE", _typ.FullName));
+                            
                         }
 
 

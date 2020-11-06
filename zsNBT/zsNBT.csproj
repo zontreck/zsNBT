@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\LibZNI\LibZNI.csproj" />
+    <ProjectReference Include="..\..\LibZNI\LibZNI.csproj" />
   </ItemGroup>
 
 </Project>
