@@ -115,65 +115,72 @@ namespace zsNBT
             foreach(FieldInfo fi in fields)
             {
                 //Console.WriteLine($"Name: {fi.Name}\nType: {fi.FieldType.Name}\nValue: {fi.GetValue(dest)}\n\n");
-
-                switch (fi.FieldType.Name)
+                try
                 {
-                    case "String":
-                        
-                        fi.SetValue(dest, currentParent[fi.Name].StringValue);
-                        break;
-                    case "Int32":
-                        fi.SetValue(dest, currentParent[fi.Name].IntValue);
-                        break;
-                    case "Double":
-                        fi.SetValue(dest, currentParent[fi.Name].DoubleValue);
-                        break;
-                    case "String[]":
-                        fi.SetValue(dest, currentParent[fi.Name].StringArrayValue);
-                        break;
-                    case "Int32[]":
-                        fi.SetValue(dest, currentParent[fi.Name].IntArrayValue);
-                        break;
-                    case "Single":
-                        fi.SetValue(dest, currentParent[fi.Name].FloatValue);
-                        break;
-                    case "Byte":
-                        fi.SetValue(dest, currentParent[fi.Name].ByteValue);
-                        break;
-                    case "List`1":
-                        string TypeStr = fi.GetValue(dest).ToString();
-                        if (TypeStr.Contains("System.String"))
-                        {
-                            fi.SetValue(dest, currentParent[fi.Name].StringArrayValue.ToList());
-                        } else if (TypeStr.Contains("System.Int32"))
-                        {
-                            fi.SetValue(dest, currentParent[fi.Name].IntArrayValue.ToList());
-                        }else if (TypeStr.Contains("System.Byte"))
-                        {
-                            fi.SetValue(dest, currentParent[fi.Name].ByteArrayValue.ToList());
-                        } else if (TypeStr.Contains("System.Single"))
-                        {
-                            fi.SetValue(dest, currentParent[fi.Name].FloatArrayValue.ToList());
-                        } else if (TypeStr.Contains("System.Double"))
-                        {
-                            fi.SetValue(dest, currentParent[fi.Name].DoubleArrayValue.ToList());
-                        }
-                        break;
-                    case "Byte[]":
-                        fi.SetValue(dest, currentParent[fi.Name].ByteArrayValue);
-                        break;
-                    case "Single[]":
-                        fi.SetValue(dest, currentParent[fi.Name].FloatArrayValue);
-                        break;
-                    case "Double[]":
-                        fi.SetValue(dest, currentParent[fi.Name].DoubleArrayValue);
-                        break;
-                    default:
-                        var VALX = fi.GetValue(dest);
-                        NBTFolder theFolder = currentParent[fi.Name] as NBTFolder;
-                        ProcessFieldData(fi.FieldType.GetFields(), theFolder, VALX);
-                        break;
-                }
+
+                    switch (fi.FieldType.Name)
+                    {
+                        case "String":
+
+                            fi.SetValue(dest, currentParent[fi.Name].StringValue);
+                            break;
+                        case "Int32":
+                            fi.SetValue(dest, currentParent[fi.Name].IntValue);
+                            break;
+                        case "Double":
+                            fi.SetValue(dest, currentParent[fi.Name].DoubleValue);
+                            break;
+                        case "String[]":
+                            fi.SetValue(dest, currentParent[fi.Name].StringArrayValue);
+                            break;
+                        case "Int32[]":
+                            fi.SetValue(dest, currentParent[fi.Name].IntArrayValue);
+                            break;
+                        case "Single":
+                            fi.SetValue(dest, currentParent[fi.Name].FloatValue);
+                            break;
+                        case "Byte":
+                            fi.SetValue(dest, currentParent[fi.Name].ByteValue);
+                            break;
+                        case "List`1":
+                            string TypeStr = fi.GetValue(dest).ToString();
+                            if (TypeStr.Contains("System.String"))
+                            {
+                                fi.SetValue(dest, currentParent[fi.Name].StringArrayValue.ToList());
+                            }
+                            else if (TypeStr.Contains("System.Int32"))
+                            {
+                                fi.SetValue(dest, currentParent[fi.Name].IntArrayValue.ToList());
+                            }
+                            else if (TypeStr.Contains("System.Byte"))
+                            {
+                                fi.SetValue(dest, currentParent[fi.Name].ByteArrayValue.ToList());
+                            }
+                            else if (TypeStr.Contains("System.Single"))
+                            {
+                                fi.SetValue(dest, currentParent[fi.Name].FloatArrayValue.ToList());
+                            }
+                            else if (TypeStr.Contains("System.Double"))
+                            {
+                                fi.SetValue(dest, currentParent[fi.Name].DoubleArrayValue.ToList());
+                            }
+                            break;
+                        case "Byte[]":
+                            fi.SetValue(dest, currentParent[fi.Name].ByteArrayValue);
+                            break;
+                        case "Single[]":
+                            fi.SetValue(dest, currentParent[fi.Name].FloatArrayValue);
+                            break;
+                        case "Double[]":
+                            fi.SetValue(dest, currentParent[fi.Name].DoubleArrayValue);
+                            break;
+                        default:
+                            var VALX = fi.GetValue(dest);
+                            NBTFolder theFolder = currentParent[fi.Name] as NBTFolder;
+                            ProcessFieldData(fi.FieldType.GetFields(), theFolder, VALX);
+                            break;
+                    }
+                } catch(Exception e) { } // Silently catch.. If it does not 100% conform, do not crash the program.
 
             }
         }
