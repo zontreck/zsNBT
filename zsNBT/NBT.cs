@@ -220,6 +220,7 @@ namespace zsNBT
             bw.Write((int)NBTTagType.END);
             bw.Flush();
             bw.Close();
+            FS.Close();
         }
 
         public static void ReadFile(this NBTFolder folder, string FileName)
@@ -227,6 +228,7 @@ namespace zsNBT
             FileStream FS = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
             BinaryReader br = new BinaryReader(FS);
             folder.ReadTag(br);
+            FS.Close();
         }
 
         public static MemoryStream WriteAsMemoryStream(this NBTFolder folder)
