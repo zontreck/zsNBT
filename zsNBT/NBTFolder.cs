@@ -323,7 +323,7 @@ namespace zsNBT
 
         public IEnumerator<NBTTag> GetEnumerator()
         {
-            return GetEnumerator();
+            return tags.Values.GetEnumerator();
         }
 
         public override NBTTag this[string tagName]
